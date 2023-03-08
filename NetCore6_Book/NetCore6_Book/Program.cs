@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using NetCore6_Book.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,6 +14,11 @@ builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
 {
     policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
 }));
+
+builder.Services.AddDbContext<ProductStoreContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ProductStore"));
+});
 
 var app = builder.Build();
 
