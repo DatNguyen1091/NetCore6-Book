@@ -15,6 +15,7 @@ namespace NetCore6_Book.Data
 
         [Range(0, double.MaxValue)]
         public double Price { get; set; }
+
         [Range(0, 500)]
         public int Quantity { get; set; }
     }
