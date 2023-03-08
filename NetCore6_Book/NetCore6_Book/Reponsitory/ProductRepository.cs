@@ -42,10 +42,10 @@ namespace NetCore6_Book.Reponsitory
             return _mapper.Map<List<ProductModel>>(products);
         }
 
-        public async Task<List<ProductModel>> GetProductAsync(int id)
+        public async Task<ProductModel> GetProductAsync(int id)
         {
             var product = await _context.Products!.FindAsync(id);
-            return _mapper.Map<List<ProductModel>>(product);
+            return _mapper.Map<ProductModel>(product);
         }
 
         public async Task UpdateProductAsync(int id, ProductModel model)

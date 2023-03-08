@@ -9,11 +9,11 @@ namespace NetCore6_Book.Controllers
     [ApiController]
     public class MyProductsController : ControllerBase
     {
-        private readonly IProductRepository _bookRepo;
+        private readonly IProductRepository _productRepo;
 
         public MyProductsController(IProductRepository repo)
         {
-            _bookRepo = repo;
+            _productRepo = repo;
         }
 
         [HttpGet]
@@ -21,7 +21,7 @@ namespace NetCore6_Book.Controllers
         {
             try
             {
-                return Ok(await _bookRepo.GetAllProductAsync());
+                return Ok(await _productRepo.GetAllProductAsync());
             }
             catch
             {
@@ -32,7 +32,7 @@ namespace NetCore6_Book.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById(int id)
         {
-            var product = await _bookRepo.GetProductAsync(id);
+            var product = await _productRepo.GetProductAsync(id);
             return product == null ? NotFound() : Ok(product);
         }
 
@@ -41,8 +41,8 @@ namespace NetCore6_Book.Controllers
         {
             try
             {
-                var newProductId = await _bookRepo.AddProductAsync(model);
-                var product = await _bookRepo.GetProductAsync(newProductId);
+                var newProductId = await _productRepo.AddProductAsync(model);
+                var product = await _productRepo.GetProductAsync(newProductId);
                 return product == null ? NotFound() : Ok(product);
             }
             catch
@@ -54,14 +54,14 @@ namespace NetCore6_Book.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProductById(int id, [FromBody] ProductModel model)
         {
-            await _bookRepo.UpdateProductAsync(id, model);
+            await _productRepo.UpdateProductAsync(id, model);
             return Ok();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProductById([FromRoute] int id)
         {
-            await _bookRepo.DeleteProductAsync(id);
+            await _productRepo.DeleteProductAsync(id);
             return Ok();
         }
     }
