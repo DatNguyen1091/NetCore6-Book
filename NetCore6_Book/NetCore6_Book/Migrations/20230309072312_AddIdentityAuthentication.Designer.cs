@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetCore6_Book.Data;
 
@@ -11,9 +12,10 @@ using NetCore6_Book.Data;
 namespace NetCore6_Book.Migrations
 {
     [DbContext(typeof(ProductStoreContext))]
-    partial class ProductStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20230309072312_AddIdentityAuthentication")]
+    partial class AddIdentityAuthentication
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
