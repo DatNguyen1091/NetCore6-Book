@@ -11,7 +11,7 @@ namespace NetCore6_Book.Data
         }
 
         #region DbSet
-        public DbSet<Product>? Products { get; set;}
+        public DbSet<Product>? Products { get; set;}   
         #endregion
     }
 }

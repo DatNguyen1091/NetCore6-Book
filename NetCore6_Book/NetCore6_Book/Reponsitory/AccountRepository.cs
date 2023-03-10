@@ -35,7 +35,7 @@ namespace NetCore6_Book.Reponsitory
 
             var authClaim = new List<Claim>
             {
-                new Claim(ClaimTypes.Email, model.Email),
+                new Claim(ClaimTypes.Email, model.Email!),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),       
             };
 
